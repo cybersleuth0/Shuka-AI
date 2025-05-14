@@ -103,9 +103,8 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _audioRecorder = AudioRecorder();
-    _audioService = AudioService(
-      baseUrl: 'http://[YOUR_IP]:8000',
-    ); // Replace with your FastAPI backend IP
+    _audioService = AudioService(); // Replace with your FastAPI backend IP
+
   }
 
   @override

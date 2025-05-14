@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AudioService {
-  final String _baseUrl = 'http://[YOUR_IP]:8000'; // Replace with your actual IP
+  final String _baseUrl = 'http://10.0.2.16:8000'; // Replace with your actual IP
 
   Future<String> sendAudioToBackend(String audioBase64) async {
     final url = Uri.parse('$_baseUrl/chat');

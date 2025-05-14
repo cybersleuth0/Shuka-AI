@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
+    <!-- Allow cleartext traffic only for emulator and debug builds -->
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">[YOUR_IP]</domain>
+        <domain includeSubdomains="true">10.0.2.16</domain>  <!-- Android emulator -->
+        <domain includeSubdomains="true">localhost</domain>
     </domain-config>
+
+    <!-- Default strict policy for production -->
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
-            <certificates src="system"/>
+            <certificates src="system" />
+            <certificates src="user" />  <!-- For custom CAs during development -->
         </trust-anchors>
     </base-config>
+
+    <!-- Debug-only configuration (auto-added by Flutter in debug builds) -->
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
 </network-security-config>
